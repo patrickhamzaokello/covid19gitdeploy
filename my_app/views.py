@@ -17,7 +17,7 @@ news_url = Request("https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en", head
 gobalnewsurl = Request("https://news.google.com/news/rss", headers={'User-Agent': 'Mozilla/5.0'})
 # gobalnewsurl = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
 
-# Create your views here.
+
 
 
 def basepage(request):
