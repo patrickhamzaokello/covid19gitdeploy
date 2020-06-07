@@ -7,15 +7,15 @@ from bs4 import BeautifulSoup
 from my_app.twittermodule.tweet_store import TweetStore
 
 
-# url = Request("https://www.worldometers.info/coronavirus/", headers={'User-Agent': 'Mozilla/5.0'})
-url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/woldometersiteoffline.html"
+url = Request("https://www.worldometers.info/coronavirus/", headers={'User-Agent': 'Mozilla/5.0'})
+# url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/woldometersiteoffline.html"
 
 
-# news_url = Request("https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en", headers={'User-Agent': 'Mozilla/5.0'})
-news_url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
+news_url = Request("https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en", headers={'User-Agent': 'Mozilla/5.0'})
+# news_url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
 
-# gobalnewsurl = Request("https://news.google.com/news/rss", headers={'User-Agent': 'Mozilla/5.0'})
-gobalnewsurl = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
+gobalnewsurl = Request("https://news.google.com/news/rss", headers={'User-Agent': 'Mozilla/5.0'})
+# gobalnewsurl = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
 
 # Create your views here.
 
