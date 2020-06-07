@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block navlinks %}
+<li class="tab"><a href="/">Covid-19 UG</a></li>
+<li class="tab"><a href="/#africa">Africa</a></li>
+
+<li class="tab"><a href="/globaldata">Global</a></li>
+<li class="tab"><a href="/cov19Info">Cov19 Info</a></li>
+<li class="tab"><a href="/news">Top Stories</a></li>
+<li class="tab"><a class="active" href="/about">About</a></li>
+<li class="tab"><a href='https://flutterwave.com/pay/1lhjb3lonnyh' target="_blank">Support</a></li>
+
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
+<style>
+    ol > p{
+        font-size: 15px;
+    }
+
+    li{
+
+        font-weight: bold;
+
+    }
+
+
+
+
+
+
+
+
+
+
+</style>
+
+
+{% endblock %}
+
+{%block content %}
+
+
+<div class="row" style="text-align: center;font-family: 'Montserrat',sans-serif; margin:  auto;">
+    
+    <p style="padding: 20px; color: #fff; font-size: 20px;">Creators of this Web Platform</p>
+    <div class="col s12 m1 l2">
+    </div>
+    <div class="col s12 m5 l4">
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static '/img/IPAD FORMAT – 3.png' %}">
+                <span class="card-title">Patrick Hamza</span>
+            </div>
+            <div class="card-content">
+                <p style="font-weight: bold;">PATRICK OKELLLO (PK) HAMZA</p>
+                <p style="font-weight: bold;">Developer & Data Engineer</p>
+                <p>Computer Science student at Mbarara University of Science and Technology, Passionate about
+                    Data!,
+                    Loves CODE. feel free to follow me on twitter </p>
+
+                <p style="font-weight: bold;">Contact: +256787250196</p>
+                <p style="font-weight: bold;">Email: pkasemer@gmail.com</p>
+
+                <!--
+                                <div class="text-center mb-4">
+                                    <a class="btn btn-primary green" href='https://flutterwave.com/pay/1lhjb3lonnyh' role="button">BUY
+                                        ME
+                                        MILK</a>
+                                </div> -->
+            </div>
+            <div class="card-action">
+                <a href="https://twitter.com/patrick_hamza?ref_src=twsrc%5Etfw" class="twitter-follow-button"
+                   data-show-count="false">Follow @patrick_hamza</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m5 l4">
+
+
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static '/img/balukuedgar.JPG' %}">
+                <span class="card-title">Edgar Baluku</span>
+            </div>
+            <div class="card-content">
+                <p style="font-weight: bold;">Edgar Baluku</p>
+                <p style="font-weight: bold;">Developer UI/UX</p>
+                <p>Information Technology Student at Mbarara University of Science and Technology, Loves Analytics &
+                    Data!,
+                    Loves CODE. feel free to follow me on twitter </p>
+
+                <p style="font-weight: bold;">Contact: +256750870755</p>
+                <p style="font-weight: bold;">Email: edgarbaluku@gmail.com</p>
+
+            </div>
+            <div class="card-action">
+                <a href="https://twitter.com/EdgarBaluku?ref_src=twsrc%5Etfw"
+                   class="twitter-follow-button" data-show-count="false">Follow
+                    @EdgarBaluku</a>
+                <script async src="https://platform.twitter.com/widgets.js"
+                        charset="utf-8"></script>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m1 l2">
+    </div>
+
+    <!--        <div class="LI-profile-badge" data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal"-->
+    <!--            data-theme="dark" data-vanity="patrick-hamza-okello-712a05147"><a class="LI-simple-link"-->
+    <!--                href='https://ug.linkedin.com/in/patrick-hamza-okello-712a05147?trk=profile-badge'>Patrick Hamza-->
+    <!--                Okello</a></div>-->
+
+
+</div>
+
+{% endblock %}

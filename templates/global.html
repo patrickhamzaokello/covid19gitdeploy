@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block navlinks %}
+<li class="tab"><a href="/">Covid-19 UG</a></li>
+<li class="tab"><a href="/#africa">Africa</a></li>
+
+<li class="tab"><a class="active" href="/globaldata">Global</a></li>
+<li class="tab"><a href="/cov19Info">Cov19 Info</a></li>
+<li class="tab"><a href="/news">Top Stories</a></li>
+
+<li class="tab"><a href="/about">About</a></li>
+<li class="tab"><a href='https://flutterwave.com/pay/1lhjb3lonnyh' target="_blank">Support</a></li>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+<div class="row">
+    <marquee style="padding-top: 10px;">
+        {% for news in news_list %}
+        <span style="font-family: 'Montserrat',sans-serif;color:#fff; font-size: 20px;"><span
+                style="color:#ffd700">| NEWS | </span> <a id="news" target="_blank"
+                href=" {{news.1}}">{{ news.0 }}</a></span>
+        {% endfor %}
+    
+    </marquee>
+    <div class="col s12 m12 l12" style="padding: 0 5px;">
+
+        <div class="card" style="background-color:#354b5830 ;color: #fff;">
+            <div class="card-content " style="text-align: center">
+                <span class="card-title">Trends of Confirmed Cases for China, USA, Italy and Spain</span>
+                <p style="padding: 20px;"><a class="btn-floating pulse  waves-effect waves-light red"><i
+                            class="material-icons">arrow_downward</i></a></p>
+                <div class="chart-container" style="position: relative; height:40vh; width:90vw">
+                    <canvas id="globalchart" height="400"></canvas>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- maintable -->
+
+    <div class="col s12 m12 l12" style="padding: 0 5px; font-size: 13px; font-family: 'Montserrat',sans-serif;">
+
+        <div class="card" style="background-color:#354b5830; color: #fff;">
+            <div class="card-content">
+
+                <span class="card-title">GLOBAL DATA </span>
+                <p style="padding: 20px;"><a class="btn-floating pulse  waves-effect waves-light red"><i
+                            class="material-icons">cloud</i></a> Last Updated: {{timenow}} GMT</p>
+
+                <table id="example" class="display" style="width:100%; white-space: nowrap;">
+                    <thead>
+                        <tr>
+                            {% for title in tabletitle %}
+                            <th>{{ title }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in tablerow%}
+                        <tr>{% for x in a %}
+                            <td style="border-right: 1px solid #9e9e9e; background: #1c2022;">{{x}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+    //datatables
+    $(document).ready(function () {
+        $('#example').DataTable({
+            "scrollY": "900px",
+            "scrollX": true,
+            "scrollCollapse": true,
+            "paging": false
+        });
+    });
+
+
+
+    const xlabels = [];
+    const chinayvalues = [];
+    const USyvalues = [];
+    const ItalyYlabels = [];
+    const Spainylabel = [];
+
+
+    chartit();
+
+
+    async function chartit() {
+
+        await getdata();
+
+        const ctx = document.getElementById('globalchart').getContext('2d');
+
+        const myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: xlabels,
+                datasets: [{
+                    label: 'China',
+                    data: chinayvalues,
+                    fill: false,
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                }, {
+                    label: 'US',
+                    data: USyvalues,
+                    fill: false,
+                    backgroundColor: 'rgb(137,255,137,0.2)',
+                    borderColor: 'rgb(137,255,137,1)',
+                    borderWidth: 1,
+
+                    // Changes this dataset to become a line
+                    type: 'line'
+                }, {
+                    label: 'Italy',
+                    data: ItalyYlabels,
+                    fill: false,
+                    backgroundColor: 'rgb(255,234,0,0.2)',
+                    borderColor: 'rgb(255,234,0,1)',
+                    borderWidth: 1,
+
+                    // Changes this dataset to become a line
+                    type: 'line'
+                }, {
+                    label: 'Spain',
+                    data: Spainylabel,
+                    fill: false,
+                    backgroundColor: 'rgb(0,255,255,0.2)',
+                    borderColor: 'rgb(0,255,255,1)',
+                    borderWidth: 1,
+
+                    // Changes this dataset to become a line
+                    type: 'line'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                title: {
+                    display: true,
+                    text: 'Confirmed Cases Trend for China, Us, Italy and Spain',
+                    fontColor: 'white'
+                },
+                legend: {
+                    labels: {
+                        // This more specific font property overrides the global property
+                        fontColor: 'white'
+                    }
+                },
+
+                scales: {
+                    labels: [{
+                        ticks: {
+
+                            fontColor: 'white'
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            fontColor: 'white'
+                        }
+                    }],
+                    xAxes: [{
+                        ticks: {
+                            fontColor: 'white'
+                        },
+                    }]
+                }
+            }
+        });
+    }
+
+
+
+    async function getdata() {
+
+        const url = "https://pomber.github.io/covid19/timeseries.json";
+        // const url = "timeseries.json";
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        //countries
+        /*
+        1. China
+        2. US
+        3. Italy
+        4. United Kingdom
+        5. United Arab Emirates
+        6. Spain
+        7. Russia
+
+        */
+
+
+        const chinarecord = data.China;
+        const usrecord = data.US;
+        const italyrecord = data.Italy;
+        const spainrecord = data.Spain;
+
+        const beginfrom = 100;
+
+        const chinastartdate = chinarecord.slice(beginfrom);
+        const Usstartdate = usrecord.slice(beginfrom);
+        const italyrecordstartdate = italyrecord.slice(beginfrom);
+        const spainrecordstartdate = spainrecord.slice(beginfrom);
+
+
+        console.log("chinadata");
+
+        for (let i = 0; i < chinastartdate.length; i++) {
+
+            const rows = chinastartdate[i];
+
+            const { date, confirmed } = rows;
+
+            xlabels.push(date);
+            chinayvalues.push(confirmed);
+
+            console.log(date, confirmed);
+
+
+        }
+
+        console.log("US");
+        for (let i = 0; i < Usstartdate.length; i++) {
+
+            const rows = Usstartdate[i];
+
+            const { date, confirmed } = rows;
+
+            USyvalues.push(confirmed);
+            console.log(date, confirmed);
+
+
+        }
+
+        console.log("italyrecord");
+        for (let i = 0; i < italyrecordstartdate.length; i++) {
+
+            const rows = italyrecordstartdate[i];
+
+            const { date, confirmed } = rows;
+
+            ItalyYlabels.push(confirmed);
+            console.log(date, confirmed);
+
+
+        }
+
+        console.log("spainrecord");
+        for (let i = 0; i < spainrecordstartdate.length; i++) {
+
+            const rows = spainrecordstartdate[i];
+
+            const { date, confirmed } = rows;
+
+            Spainylabel.push(confirmed);
+            console.log(date, confirmed);
+
+
+        }
+
+
+
+
+    }
+
+
+
+</script>
+{% endblock %}

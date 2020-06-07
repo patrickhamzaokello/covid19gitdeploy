@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163250485-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163250485-1');
+
+
+
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 | UG Analytics</title>
+    <link rel="icon" href="{% static '/img/pkasemer.png' %}" type="image/png">
+
+    <meta name="keywords"
+        content="pkasemer,pkasemer.com, Pkasemer, Pkasemer.com, Covid19 UG, Patrick Hamza Okello, Uganda Analytics, Covid19 Uganda Analytics,">
+  
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700");
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0 2em;
+  background-image: url("{% static '/img/body-bg.png' %}");
+
+  background-color:#16181d;
+}
+main {
+  min-width: 300px;
+  max-width: 500px;
+  margin: auto;
+}
+p {
+  font-size: 1em;
+  line-height: 1.75em;
+  border-top: 3px solid;
+  border-image: linear-gradient(to right, #743ad5 0%, #d53a9d 100%);
+  border-image-slice: 1;
+  border-width: 3px;
+  margin: 0;
+  padding: 40px;
+  counter-increment: section;
+  position: relative;
+  color:#00bcd4;
+}
+p:before {
+  content: counter(section);
+  position: absolute;
+  border-radius: 50%;
+  padding: 10px;
+  height: 1.25em;
+  width: 1.25em;
+  background-color: #e91e63;
+  text-align: center;
+  line-height: 1.25em;
+  color: #ffffff;
+  font-size: 1em;
+}
+p:nth-child(odd) {
+  border-right: 3px solid;
+  padding-left: 0;
+}
+p:nth-child(odd):before {
+  left: 100%;
+  margin-left: -20px;
+}
+p:nth-child(even) {
+  border-left: 3px solid;
+  padding-right: 0;
+}
+p:nth-child(even):before {
+  right: 100%;
+  margin-right: -20px;
+}
+p:first-child {
+  border-top: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+p:last-child {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    font-size:larger;
+}
+
+a:hover{
+    color:yellow;
+}
+
+.text{
+    color: #ffffff;
+    text-align: center;
+}
+
+h3 > a{
+    color:burlywood;
+}
+
+    </style>
+</head>
+<body>
+
+    <main>
+
+    <h3 style="text-align: center;"> <a href="/">View Dashboard</a></h3>
+  
+    
+        <div class="text">
+            <h1 style="font-size: 18px;">Top Stories</h1>
+            <h1 style="font-size: 18px;">From Newspapers In and Around Uganda</h1>
+            <h5 style="color: rgb(30, 44, 71);" >source:google news</h5>
+        </div>
+
+        {% for news in news_list %}
+
+
+        <p><a id="news" href=" {{ news.1 }} " target="_blank">
+            {{ news.0}}</a> <br>{{ news.2}}</p>
+
+
+        {% endfor %}
+    </main>
+</body>
+</html>

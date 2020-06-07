@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block navlinks %}
+<li class="tab"><a href="/">Covid-19 UG</a></li>
+<li class="tab"><a href="/#africa">Africa</a></li>
+
+<li class="tab"><a href="/globaldata">Global</a></li>
+<li class="tab"><a class="active" href="/cov19Info">Cov19 Info</a></li>
+<li class="tab"><a href="/news">Top Stories</a></li>
+
+<li class="tab"><a  href="/about">About</a></li>
+<li class="tab"><a href='https://flutterwave.com/pay/1lhjb3lonnyh' target="_blank">Support</a></li>
+
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
+<style>
+    ol > p{
+        font-size: 15px;
+    }
+
+    li{
+
+        font-weight: bold;
+
+    }
+
+
+
+
+</style>
+
+
+{% endblock %}
+
+{%block content %}
+
+
+<div class="row" style="background-color:#263844;">
+    <div class="col s12 m8 l9" style="font-family: 'Montserrat',sans-serif;">
+
+        <div class="card">
+            <div class="card-image">
+                <img
+                        src="{% static 'img/coronafixed.jpg' %}">
+                <span class="card-title">COVID-19</span>
+            </div>
+            <div class="card-content">
+                <h4 style="text-align: center">Coronavirus Disease (COVID-19) Advice for the Public</h4>
+
+                <h5 style="text-align: center">Basic protective measures against the new coronavirus</h5>
+                <p>Stay aware of the latest information on the COVID-19 outbreak, available on the
+                    WHO website and through
+                    your national and local public health authority. Most people who become infected experience mild
+                    illness
+                    and recover, but it can be more severe for others. Take care of your health and protect others by
+                    doing
+                    the following:</p>
+
+
+                <ol>
+                    <li>Wash your hands frequently</li>
+                    <p>Regularly and thoroughly clean your hands with an alcohol-based hand rub or wash
+                        them with soap and water.</p>
+                    <p><b>Why?</b> Washing your hands with soap and water or using alcohol-based hand rub
+                        kills viruses that may be on
+                        your hands.</p>
+
+                    <li>Maintain social distancing</li>
+                    <p>Maintain at least 1 metre (3 feet) distance between yourself and anyone who is coughing or
+                        sneezing.</p>
+
+                    <p><b>Why? </b> When someone coughs or sneezes they spray small liquid droplets from their
+                        nose or mouth which may
+                        contain virus. If you are too close, you can breathe in the droplets, including the COVID-19
+                        virus if
+                        the
+                        person coughing has the disease.</p>
+
+                    <li> Avoid touching eyes, nose and mouth</li>
+                    <p>
+                        Avoid touching eyes, nose and mouth
+                        <b>Why?</b> Hands touch many surfaces and can pick up viruses. Once contaminated, hands can
+                        transfer the virus
+                        to
+                        your eyes, nose or mouth. From there, the virus can enter your body and can make you sick.
+                    </p>
+
+                    <li>Practice respiratory hygiene</li>
+                    <p> Practice respiratory hygiene
+                        Make sure you, and the people around you, follow good respiratory hygiene. This means covering
+                        your
+                        mouth
+                        and nose with your bent elbow or tissue when you cough or sneeze. Then dispose of the used
+                        tissue
+                        immediately.</p>
+
+                    <p><b>Why?</b> Droplets spread virus. By following good respiratory hygiene you protect the people
+                        around you from
+                        viruses such as cold, flu and COVID-19.
+                    </p>
+
+
+                    <li>If you have fever, cough and difficulty breathing, seek medical care early</li>
+                    <p>If you have fever, cough and difficulty breathing, seek medical care early
+                        Stay home if you feel unwell. If you have a fever, cough and difficulty breathing, seek medical
+                        attention
+                        and call in advance. Follow the directions of your local health authority.
+
+                    </p>
+                    <p><b>Why?</b> National and local authorities will have the most up to date information on the
+                        situation in your
+                        area.
+                        Calling in advance will allow your health care provider to quickly direct you to the right
+                        health
+                        facility.
+                        This will also protect you and help prevent spread of viruses and other infections.
+                    </p>
+
+                    <li>Stay informed and follow advice given by your healthcare provider</li>
+                    <p> Stay informed and follow advice given by your healthcare provider
+                        Stay informed on the latest developments about COVID-19. Follow advice given by your healthcare
+                        provider,
+                        your national and local public health authority or your employer on how to protect yourself and
+                        others
+                        from COVID-19. </p>
+
+                    <p><b>Why?</b> National and local authorities will have the most up to date information on whether
+                        COVID-19 is
+                        spreading in your area. They are best placed to advise on what people in your area should be
+                        doing to
+                        protect themselves.</p>
+
+                </ol>
+                <h5>Sources of Information</h5>
+
+                <ol>
+                    <li>
+                        <a style="color:blue" href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">WHO
+                            (World Health Organization)</a></li>
+
+                </ol>
+            </div>
+        </div>
+
+    </div>
+    <div class="col s12 m4 l3" style="font-family: 'Montserrat',sans-serif;">
+
+        <div class="card">
+            <div class="card-image">
+                <img src="{% static '/img/IMG_9360.JPG' %}">
+            </div>
+            <div class="card-content">
+                <p>
+                    Help Line
+                </p>
+            </div>
+        </div>
+         <div class="card">
+            <div class="card-image">
+                <img src="{% static '/img/IMG_9367.JPG' %}">
+            </div>
+            <div class="card-content">
+                <p>
+                    Help Line
+                </p>
+            </div>
+        </div>
+         <div class="card">
+            <div class="card-image">
+                <img src="{% static '/img/IMG_9366.JPG' %}">
+            </div>
+            <div class="card-content">
+                <p>
+                    Help Line
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+{% endblock %}

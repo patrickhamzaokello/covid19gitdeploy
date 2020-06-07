@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    {% load static %}
+
+    {% block nav %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163250485-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-163250485-1');
+
+
+
+
+    </script>
+    <title>Covid-19 | UG Analytics</title>
+    <link rel="icon" href="{% static '/img/pkasemer.png' %}" type="image/png">
+
+    <meta name="keywords"
+        content="pkasemer,pkasemer.com, Pkasemer, Pkasemer.com, Covid19 UG, Patrick Hamza Okello, Uganda Analytics, Covid19 Uganda Analytics,">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}" media="screen,projection" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <!--    datatables-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <!-- loadingdata -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+        .positive {
+            border-left: 1px solid #ffff00;
+        }
+
+        .negative {
+            border-left: 1px solid #ff1a1a;
+        }
+
+        .neutral {
+            border-left: 1px solid #64ba47;
+        }
+
+        .lrg-heading {
+            font-size: 48px;
+        }
+
+        .description {
+            font-size: 24px;
+            color: gray;
+        }
+
+        .brand {
+            color: yellow;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #1a1e21;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #233142;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f44336;
+        }
+
+        input:not([type]),
+        input[type=text]:not(.browser-default),
+        input[type=password]:not(.browser-default),
+        input[type=email]:not(.browser-default),
+        input[type=url]:not(.browser-default),
+        input[type=time]:not(.browser-default),
+        input[type=date]:not(.browser-default),
+        input[type=datetime]:not(.browser-default),
+        input[type=datetime-local]:not(.browser-default),
+        input[type=tel]:not(.browser-default),
+        input[type=number]:not(.browser-default),
+        input[type=search]:not(.browser-default),
+        textarea.materialize-textarea {
+            background-color: transparent;
+            border: 1px solid #e4e0da;
+            color: wheat;
+            text-align: center;
+
+            border-radius: 0;
+            outline: none;
+            height: 3rem;
+            width: 100%;
+            font-size: 16px;
+            margin: 0 0 8px 0;
+            padding: 0;
+
+        }
+
+        .tabs.tabs-transparent .tab a:hover,
+        .tabs.tabs-transparent .tab a.active {
+            color: #faff1c;
+        }
+
+        .tabs.tabs-transparent .tab a,
+        .tabs.tabs-transparent .tab.disabled a,
+        .tabs.tabs-transparent .tab.disabled a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+
+
+
+
+        label {
+            color: rgb(217, 255, 0);
+            font-size: 15px;
+            /* border: 1px solid orange; */
+        }
+
+        .dataTables_info,
+        .dataTables_wrapper .dataTables_paginate {
+            color: white !important;
+        }
+
+        .dataTables_empty {
+            background-color: #354B58;
+            color: yellow;
+        }
+
+        table.dataTable.stripe tbody tr.odd,
+        table.dataTable.display tbody tr.odd {
+            background-color: #3c404330;
+        }
+
+        table.dataTable.stripe tbody tr.even,
+        table.dataTable.display tbody tr.even {
+            background-color: #1c2022;
+        }
+
+
+        table.dataTable.display tbody tr.even>.sorting_1,
+        table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+            background-color: #1c2022;
+        }
+
+        table.dataTable.display tbody tr.odd>.sorting_1,
+        table.dataTable.order-column.stripe tbody tr.odd>.sorting_1 {
+            background-color: #3c404330;
+        }
+
+        table.dataTable thead th,
+        table.dataTable thead td {
+            padding: 10px 18px;
+            /* border-bottom: 1px solid #111; */
+        }
+
+        #example thead th,
+        #example thead td,
+        #example tfoot th,
+        #example tfoot td {
+            border-bottom: none;
+        }
+
+        .bg {
+
+            /* background-image: url("{% static '/img/bgorange.png' %}"); */
+            background-repeat: no-repeat;
+            height: 50%;
+            width: 100%;
+
+        }
+
+        body {
+            /* background-color: #151f25; */
+            background-image: url("{% static '/img/body-bg.png' %}");
+            background-color: #16181d;
+            font-weight: 400;
+            line-height: 1.63;
+            letter-spacing: -.001em;
+        }
+
+        #news:hover {
+            color: yellow;
+
+        }
+
+        #news {
+            color: white;
+        }
+    </style>
+    {% endblock %}
+
+</head>
+
+<body>
+
+    <div class="navbar-fixed" style="margin-bottom: 46px;">
+
+        <nav class="nav-extended" style="background-color: #15181a;">
+            <div class="nav-wrapper">
+                <a href="/" class="brand-logo"
+                    style="padding: 0 10px;font-size: 20px; font-family: 'Montserrat',sans-serif">COVID-19 UG</a>
+
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="https://twitter.com/patrick_hamza?ref_src=twsrc%5Etfw" class="twitter-follow-button"
+                            data-show-count="false">Follow @patrick_hamza</a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </li>
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/globaldata">Global Data</a></li>
+                    <li><a href='https://flutterwave.com/pay/1lhjb3lonnyh'>Support</a></li>
+
+                </ul>
+            </div>
+            <div class="nav-content" style="background-color:#ce0350;">
+                <ul class="tabs tabs-transparent">
+
+                    {% block navlinks %}
+                    <li class="tab"><a class="active" href="/">Covid-19 UG</a></li>
+                    <li class="tab"><a href="/#africa">Africa</a></li>
+
+                    <li class="tab"><a href="/globaldata">Global</a></li>
+                    <li class="tab"><a href="/cov19Info">Cov19 Info</a></li>
+                    <li class="tab"><a href="/news">Top Stories</a></li>
+
+                    <li class="tab"><a href="/about">About</a></li>
+                    <li class="tab"><a href='https://flutterwave.com/pay/1lhjb3lonnyh' target="_blank">Support</a></li>
+                    {% endblock %}
+
+                </ul>
+
+            </div>
+        </nav>
+
+    </div>
+
+
+
+    <!-- Navbar goes here -->
+
+    <!-- Page Layout here -->
+
+    {% block content %}
+    <div class="bg">
+        <div class="row">
+
+            <!--    mainpage-->
+            <div class="col s12 m12 l12" style="padding-left:5px; padding-right: 5px; padding-top: 20px;">
+                <!-- Teal page content  -->
+
+                <marquee>
+                    {% for news in news_list %}
+                    <span style="font-family: 'Montserrat',sans-serif;color:#fff; font-size: 20px;"><span
+                            style="color:#ffd700">| NEWS | </span> <a id="news" target="_blank"
+                            href=" {{news.1}}">{{ news.0 }}</a></span>
+                    {% endfor %}
+
+                </marquee>
+
+
+
+                <!--            1col-->
+
+                <div class="col s12 m4 l5" style="padding: 0 5px; ">
+
+                    <div class="card"
+                        style="background-color: #3c404330; font-family: 'Montserrat',sans-serif; color: #e4e0da;">
+                        <div class="card-content ">
+                            <span class="card-title">NEW:</span>
+                            <p>Daily News feed from various newspapers and media sources in Uganda now avaliable. local <a
+                                href="/news">News</a>.For Global News check the <a
+                                href="/globaldata">Global</a> page.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="card" style=" height: 700px;background-color:#171b1d; ">
+
+                        <div class="card-content white-text">
+
+                            <p style="color: rgb(199, 199, 199); text-align: center;">Last Updated: {{timenow}} GMT</p>
+                            <h5 style="padding: 20px;text-align: center;font-family: 'Montserrat',sans-serif;">UGANDA
+                                SUMMARY</h5>
+
+                            <p style="text-align: center;font-size: 20px;font-family: 'Montserrat',sans-serif;">
+                                CONFIRMED CASES</p>
+
+                            <p
+                                style="font-size: 120px; font-weight: 700;font-family: 'Montserrat',sans-serif;text-align:center; color:yellow;">
+                                {{casesug}}</p>
+
+
+                            <div class="row" style=" text-align: center;font-family: 'Montserrat',sans-serif;">
+
+                                <div class="col s6 m6 l6">
+
+                                    <p
+                                        style="text-align: center;color:#ffd700;font-size: 30px; font-family: 'Montserrat',sans-serif;">
+                                        {{testdone}}</p>
+                                    <h6 style="text-align:center; font-family:'Montserrat',sans-serif;">Tests Done</h6>
+
+                                </div>
+                                <div class="col s6 m6 l6">
+                                    <p
+                                        style="text-align: center;color:#ffd700; font-size: 30px; font-family: 'Montserrat',sans-serif;">
+                                        {{activecasesug}}</p>
+                                    <h6 style="text-align: center;font-family: 'Montserrat',sans-serif;">Active Cases
+                                    </h6>
+
+                                </div>
+
+
+                            </div>
+
+                            <div class="row" style=" text-align: center;font-family: 'Montserrat',sans-serif;">
+                                <div class="col s6 m6 l6">
+                                    <h6 style="text-align: center; font-family: 'Montserrat',sans-serif;">Recovered</h6>
+                                    <p
+                                        style="text-align: center;color:#ffd700;font-size: 20px; font-family: 'Montserrat',sans-serif;">
+                                        {{recoveredug}}</p>
+                                </div>
+
+                                <div class="col s6 m6 l6">
+                                    <h6 style="text-align: center;font-family: 'Montserrat',sans-serif;">New cases</h6>
+                                    <p
+                                        style="text-align: center;color:#ffd700;font-size: 20px; font-family: 'Montserrat',sans-serif;">
+                                        {{newcasesug}}</p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="row" style="text-align: center; font-family: 'Montserrat',sans-serif;">
+                                <div class="col s12">
+                                    <h6 style="text-align: center;font-family: 'Montserrat',sans-serif;">Deaths</h6>
+                                    <p
+                                        style="text-align: center;color:#ffd700; font-size: 20px;font-family: 'Montserrat',sans-serif;">
+                                        {{deathsug}}</p>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                    <div class="card" style="background-color:#3c404330; color:#eee;">
+
+                        <div class="card-content" style="font-family: 'Montserrat',sans-serif;">
+                            <p>Emergency Contacts</p>
+                          
+                            <ol>
+                                <li>0800-203-033</li>
+                                <li>0800-303-033</li>
+                                <li>919</li>
+                            </ol>
+                            
+                            <p>For more Information</p>
+                            <ol>
+                                <li>Uganda Viral Research center</li>
+                                <li>Ministry of Health Uganda</li>
+                                <li>World Health Organization WHO</li>
+                                <li>Center for Disease Control CDC</li>
+                                
+                            </ol>
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!--                2col-->
+                <div class="col s12 m4 l3" style="padding: 0 5px;">
+
+                    <div class="card" style="height: 382px; background-color:#4caf50">
+
+
+                        <div class="card-content"
+                            style="text-align:center;   color: #fff;font-family: 'Montserrat',sans-serif;">
+                            <p style="padding: 20px;">GLOBAL DATA</p>
+                            <p style="font-family: 'Roboto', sans-serif; font-size: 40px; color:#ffffff;">{{newcases}}
+                            </p>
+                            <p style="font-size: 20px;">New Cases</p>
+                            </br>
+
+                            <p style="font-family: 'Roboto', sans-serif;font-size: 40px; color: yellow;">{{newdeath}}
+                            </p>
+                            <p style="font-size: 20px;">New Deaths</p>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="card" style="height: 382px; background-color:#3c404330;">
+                        <p style="color:#fff; text-align: center;padding-top: 10px;">GLOBAL DATA</p>
+                        <div class="card-content" style="text-align:center;color: #fff;">
+
+
+                            <p style="font-size: 35px;color: #ffd700;">{{Activecases}}</p>
+                            <p style="font-size: 18px;font-family: 'Montserrat',sans-serif;">ACTIVE CASES</p>
+                            <br>
+                            <p style="font-size: 25px;color: #00f7ff;">{{mildcondition}}</p>
+
+                            <p style="font-size: 18px; font-family: 'Montserrat',sans-serif;">Mild Condition</p>
+
+                            <p style="font-size: 25px;color: #ff3300;">{{SeriousCritical}}</p>
+
+
+                            <p style="font-size: 18px; font-family: 'Montserrat',sans-serif;">Critical Condition</p>
+
+
+                        </div>
+                    </div>
+                    <div class="card" style=" height: 436px; background-color:#3c404330;">
+
+
+                        <div class="card-content" style="text-align:center;color: #fff;">
+                            <p style="font-family: 'Montserrat',sans-serif;">GLOBAL DATA TOTAL</p>
+                            <br>
+
+                            <p style="font-size: 20px;font-family: 'Montserrat',sans-serif;">Coronavirus Cases</p>
+
+                            <p style="font-size: 40px; color: #93d7ff;">{{cases}}</p>
+
+                            <p style="font-size: 20px; font-family: 'Montserrat',sans-serif;">Recovered</p>
+
+                            <p style="font-size: 35px; color: #64dd17;">{{recovered}}</p>
+
+                            <p style="font-size: 20px; font-family: 'Montserrat',sans-serif;">Total Deaths</p>
+
+                            <p style="font-size: 35px; color:#ff1111;">{{deaths}}</p>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <!--            3col-->
+                <div class="col s12 m4 l4" style="padding: 0 5px;">
+
+                    <div class="card" style="background-color:#364049;">
+
+
+                        <div class="card-content" style="color: #bcbfbf;">
+                            <p
+                                style=" color: rgb(251, 255, 0);font-size: 20px;text-align:center;font-family: 'Montserrat',sans-serif;">
+                                EAST AFRICAN REGION
+                            </p>
+
+                            <div class="table-responsive "
+                                style="display:block; width: 100%; overflow-x: auto;-webkit-overflow-scrolling: touch;">
+
+
+                                <div id="photo">
+                                    <img style="vertical-align:middle" src="https://www.countryflags.io/KE/flat/64.png"
+                                        alt="">
+                                    <span style="font-size:15px;color: #fff;vertical-align:middle">KENYA</span>
+                                </div>
+
+                                <table border="none" class=" highlight #f7ffff80">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #787878; ">
+                                            <th>Confirmed</th>
+                                            <th>Active</th>
+                                            <th>Recovered</th>
+                                            <th>Deaths</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr style="border-bottom:1px solid #787878; font-size: 20px; ">
+                                            <td style="border-right: 1px solid #787878;">{{Ktotal}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 255, 170)">
+                                                {{Kactive}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 192, 250);">
+                                                {{Krecovered}}
+                                            </td>
+                                            <td style="color: #fcba03;">{{Kdeaths}}</td>
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+                                <div id="photo">
+                                    <img style="vertical-align:middle" src="https://www.countryflags.io/RW/flat/64.png"
+                                        alt="">
+                                    <span style="font-size:15px;color: #fff;vertical-align:middle">RWANDA</span>
+                                </div>
+                                <table class=" highlight">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #787878; ">
+                                            <th>Confirmed</th>
+                                            <th>Active</th>
+                                            <th>Recovered</th>
+                                            <th>Deaths</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr style="border-bottom:1px solid #787878; font-size: 20px;">
+                                            <td style="border-right: 1px solid #787878;">{{Rtotal}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 255, 170)">
+                                                {{Ractive}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 192, 250)">
+                                                {{Rrecovered}}</td>
+                                            <td style="color: #fcba03;">{{Rdeaths}}</td>
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <div id="photo">
+                                    <img style="vertical-align:middle" src="https://www.countryflags.io/TZ/flat/64.png"
+                                        alt="">
+                                    <span style="font-size:15px;color: #fff;vertical-align:middle">TANZANIA</span>
+                                </div>
+                                <table border="none" class=" highlight #f7ffff80">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #787878; ">
+                                            <th>Confirmed</th>
+                                            <th>Active</th>
+                                            <th>Recovered</th>
+                                            <th>Deaths</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr style="border-bottom:1px solid #787878;font-size: 20px; ">
+                                            <td style="border-right: 1px solid #787878;">{{Ttotal}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 255, 170)">
+                                                {{Tactive}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 192, 250)">
+                                                {{Trecovered}}</td>
+                                            <td style="color: #fcba03;">{{Tdeaths}}</td>
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+
+                                <div id="photo">
+                                    <img style="vertical-align:middle" src="https://www.countryflags.io/BI/flat/64.png"
+                                        alt="">
+                                    <span style="font-size:15px;color: #fff;vertical-align:middle">BURUNDI</span>
+                                </div>
+                                <table border="none" class=" highlight #f7ffff80">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #787878; ">
+                                            <th>Confirmed</th>
+                                            <th>Active</th>
+                                            <th>Recovered</th>
+                                            <th>Deaths</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr style="border-bottom:1px solid #787878;font-size: 20px; ">
+                                            <td style="border-right: 1px solid #787878;">{{Btotal}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 255, 170)">
+                                                {{Bactive}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 192, 250)">
+                                                {{Brecovered}}</td>
+                                            <td style="color: #fcba03;">{{Bdeaths}}</td>
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <div id="photo">
+                                    <img style="vertical-align:middle" src="https://www.countryflags.io/SS/flat/64.png"
+                                        alt="">
+                                    <span style=" font-size:15px;color: #fff;vertical-align:middle">SOUTH SUDAN</span>
+                                </div>
+                                <table border="none" class=" highlight #f7ffff80">
+                                    <thead>
+                                        <tr style="border-bottom:1px solid #787878; ">
+                                            <th>Confirmed</th>
+                                            <th>Active</th>
+                                            <th>Recovered</th>
+                                            <th>Deaths</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr style="border-bottom:1px solid #787878; font-size: 20px;">
+                                            <td style="border-right: 1px solid #787878;">{{Stotal}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 255, 170)">
+                                                {{Sactive}}</td>
+                                            <td style="border-right: 1px solid #787878;color: rgb(0, 192, 250)">
+                                                {{Srecovered}}</td>
+                                            <td style="color: #fcba03;">{{Sdeaths}}</td>
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <!--graph-->
+            <div class="col s12 m12 l12" style="padding: 0 5px;">
+
+                <div class="card" style="background-color:#3c404330 ;color: #fff;">
+                    <div class="card-content " style="text-align: center">
+                        <span class="card-title">Trends of Confirmed Cases for Some East African Countries</span>
+                        <p style="padding: 20px;"><a class="btn-floating pulse  waves-effect waves-light red"><i
+                                    class="material-icons">arrow_downward</i></a></p>
+                        <div class="chart-container" style="position: relative; height:40vh; width:90vw">
+                            <canvas id="myChart" height="400"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <!--    secondhalf-->
+            <div class="col s12 m12 l12 ">
+                <div class="row">
+                    <!--tables-->
+                    <div class="col s12 m12 l9" style="padding: 0 5px;">
+
+                        <div class="card" style="background-color:#3c404330; color: #bcbfbf;">
+                            <div class="card-content ">
+                                <span class="card-title " style="color:yellow">CONTINENTAL ANALYSIS</span>
+                                <p style="padding: 20px;"><a class="btn-floating pulse  waves-effect waves-light red"><i
+                                            class="material-icons">cloud</i></a>Continents With Records</p>
+                                <div class="table-responsive "
+                                    style="display:block; width: 100%; overflow-x: auto;-webkit-overflow-scrolling: touch;">
+                                    <table class=" highlight #f7ffff80">
+                                        <thead>
+                                            <tr
+                                                style="white-space: nowrap;  border-bottom: 1px solid #787878; color: #e4e0da;">
+                                                {% for title in tabletitle %}
+                                                <th>{{ title }}</th>
+                                                {% endfor %}
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for a in tablerow%}
+                                            <tr style="border-bottom: 1px solid #787878;">{% for x in a %}
+                                                <td> {{x}}</td>
+                                                {% endfor %}
+                                            </tr>
+                                            {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="card" style="background-color:#3c404330; color: #bcbfbf;">
+                            <div class="card-content">
+
+                                <span id="africa" class="card-title" style="color:yellow">AFRICAN COUNTRIES
+                                    REPORT</span>
+                                <p style="padding: 20px;"><a class="btn-floating pulse  waves-effect waves-light red"><i
+                                            class="material-icons">cloud</i></a> Last Updated: {{timenow}} GMT</p>
+
+                                <table id="example" class="display" style="width:100%; white-space: nowrap;">
+                                    <thead>
+                                        <tr style="color: #e4e0da;">
+                                            {% for title in aftabletitles %}
+                                            <th>{{ title }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for a in africarow%}
+                                        <tr>{% for x in a %}
+                                            <td style="border-right: 1px solid #787878;">
+                                                {{x}}
+                                            </td>
+                                            {% endfor %}
+                                        </tr>
+                                        {% endfor %}
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!--extras-->
+                    <div id="twitter" class="col s12 m12 l3" style="padding: 0 5px;">
+                        <div class="row">
+                            <div class="col s12 m6 l12">
+
+                                <div class="card"
+                                    style=" text-align: center;font-family: 'Montserrat',sans-serif;background-color:#3c404330; color: #fff;">
+                                    <div class="chat" style="padding:10px;">
+                                        <p style="font-size: 10px;">Last Updated: {{timenow}} GMT</p>
+                                        <h4>Ugandans on Twitter</h4>
+                                        <p style="font-size: 13px;"> Monitoring Twitter Reactions To @KagutaMuseveni
+                                            @newvisionwire, @UVRIug, @MinofHealthUG, #StaySafeUg, @ntvuganda,
+                                            Dr.JaneRuth_Aceng</p>
+                                        <ul>
+                                            <li>Sentiments' Key</li>
+                                            <li style="color: yellow;"> Yellow box-- means positive</li>
+                                            <li style="color: red;"> Red box -- means negative</li>
+                                            <li style="color: green;"> Green box -- means neutral</li>
+                                        </ul>
+
+
+                                        <div class="text-center mb-4" style="padding: 20px;">
+                                            <a href="https://twitter.com/patrick_hamza?ref_src=twsrc%5Etfw"
+                                                class="twitter-follow-button" data-show-count="false">Follow
+                                                @patrick_hamza</a>
+                                            <script async src="https://platform.twitter.com/widgets.js"
+                                                charset="utf-8"></script>
+
+                                            <a href="https://twitter.com/EdgarBaluku?ref_src=twsrc%5Etfw"
+                                                class="twitter-follow-button" data-show-count="false">Follow
+                                                @EdgarBaluku</a>
+                                            <script async src="https://platform.twitter.com/widgets.js"
+                                                charset="utf-8"></script>
+                                        </div>
+
+
+                                        <div class="mycontainer"
+                                            style="margin: 0 auto;	border-radius: 5px;	overflow: hidden; background-color: #3c404330;">
+                                            <div class="chat-container"
+                                                style="height: 600px;overflow: auto;direction: rtl;">
+
+                                                <div class="tweet"
+                                                    style="border-bottom: solid 1px #ccc;padding: 20px;	direction: ltr;">
+
+                                                    {% for tweet in tweets %}
+                                                    <div id="tweetautoload">
+                                                        <div class="card {% if tweet.data.polarity > 0 %} positive {% endif %} {% if tweet.data.polarity < 0 %} negative {% endif %} {% if tweet.data.polarity == 0 %} neutral {% endif %}"
+                                                            style="border-radius: 10px; background-color: #00000024;">
+                                                            <div style="padding: 20px;" class="card-body">
+                                                                <p style="font-size: 13.5px;" class="card-text">
+                                                                    {{ tweet.filtered_text|safe}}
+                                                                </p>
+                                                                <br />
+                                                                <div style="font-size: 12px;" class="card-text">
+                                                                    <img style="border-radius: 50%"
+                                                                        alt="{{ tweet.data.username }}" height="48"
+                                                                        src="{{ tweet.data.profile_image_url }}"
+                                                                        width="48" class="mr-3" />
+                                                                    {{ tweet.data.name }} (<a
+                                                                        href="{{ tweet.user_link }}" target="_blank">
+                                                                        {{ tweet.data.username }}</a>)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    {% endfor %}
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="card-action"
+                                        style=" font-size: 10px; font-family: 'Montserrat',sans-serif;">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col s12 m6 l12" id="newsmedia">
+
+                                <div class="card"
+                                    style=" text-align: center;font-family: 'Montserrat',sans-serif;background-color:#3c404330; color: #fff;">
+                                    <div class="chat" style="padding:10px;">
+
+                                        <h4 style="color: yellow;">News Updates</h4>
+                                        <p style="font-size: larger;">Updates from News Papers</p>
+
+
+
+
+                                        <div class="mycontainer"
+                                            style="margin: 0 auto;	border-radius: 5px;	overflow: hidden; background-color: #3c404330;">
+                                            <div class="chat-container"
+                                                style="height: 600px;overflow: auto;direction: rtl;">
+
+                                                <div class="news"
+                                                    style="border-bottom: solid 1px #ccc;padding: 20px;	direction: ltr;">
+
+                                                    {% for news in news_list %}
+
+                                                    <div class="card"
+                                                        style=" border-radius: 10px; background-color: #00000024; ">
+                                                        <div style="padding: 20px;" class="card-body">
+                                                            <p style="font-size: 15px;" class="card-text">
+                                                                <a id="news" href=" {{ news.1 }} " target="_blank">
+                                                                    {{ news.0}}</a>
+                                                            </p>
+                                                            <br />
+                                                            <div style=" color:#0ec8f7; font-size: 13px;"
+                                                                class="card-text">
+
+                                                                {{ news.2}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    {% endfor %}
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="card-action"
+                                        style=" font-size: 10px; font-family: 'Montserrat',sans-serif;">
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col s12 m6 l12">
+
+                                <div class="card">
+                                    <div class="card-image">
+                                        <img src="{% static '/img/preg.JPG' %}">
+                                    </div>
+                                    <div class="card-content">
+                                        <p>
+                                            Summary of Guidlines
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    {% endblock %}
+
+    <script>
+
+        //datatables
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "scrollY": "900px",
+                "scrollX": true,
+                "scrollCollapse": true,
+                "paging": false
+            });
+        });
+
+
+
+
+        //graph function
+
+        const xlabels = [];
+        const ylabels = [];
+        const klabels = [];
+        const tlabels = [];
+        const rlabels = [];
+
+
+        chartit();
+
+
+        async function chartit() {
+
+            await getdata();
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+
+            const myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xlabels,
+                    datasets: [{
+                        label: 'Uganda',
+                        data: ylabels,
+                        fill: false,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Kenya',
+                        data: klabels,
+                        fill: false,
+                        backgroundColor: 'rgb(137,255,137,0.2)',
+                        borderColor: 'rgb(137,255,137,1)',
+                        borderWidth: 1,
+
+                        // Changes this dataset to become a line
+                        type: 'line'
+                    }, {
+                        label: 'Tanzania',
+                        data: tlabels,
+                        fill: false,
+                        backgroundColor: 'rgb(255,255,0,0.2)',
+                        borderColor: 'rgb(255,255,0,1)',
+                        borderWidth: 1,
+
+                        // Changes this dataset to become a line
+                        type: 'line'
+                    }, {
+                        label: 'Rwanda',
+                        data: rlabels,
+                        fill: false,
+                        backgroundColor: 'rgb(0,255,255,0.2)',
+                        borderColor: 'rgb(0,255,255,1)',
+                        borderWidth: 1,
+
+                        // Changes this dataset to become a line
+                        type: 'line'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    title: {
+                        display: true,
+                        text: 'Trend of Confirmed Cases for Uganda, Kenya, Tanzania and Rwanda',
+                        fontColor: 'white'
+                    },
+                    legend: {
+                        labels: {
+                            // This more specific font property overrides the global property
+                            fontColor: 'white'
+                        }
+                    },
+
+                    scales: {
+                        labels: [{
+                            ticks: {
+
+                                fontColor: 'white'
+                            }
+                        }],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontColor: 'white'
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontColor: 'white'
+                            },
+                        }]
+                    }
+                }
+            });
+        }
+
+
+
+        async function getdata() {
+
+            const url = "https://pomber.github.io/covid19/timeseries.json";
+            // const url = "timeseries.json";
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const ugandaarray = data.Uganda;
+            const kenyaarray = data.Kenya;
+            const tanzania = data.Tanzania;
+            const Rwanda = data.Rwanda;
+
+            const beginfrom = 100;
+
+            const startdate = ugandaarray.slice(beginfrom);
+            const kenyastartdate = kenyaarray.slice(beginfrom);
+            const tanzaniastartdate = tanzania.slice(beginfrom);
+            const rwandastartdate = Rwanda.slice(beginfrom);
+
+
+            console.log("ug data");
+
+            for (let i = 0; i < startdate.length; i++) {
+
+                const rows = startdate[i];
+
+                const { date, confirmed } = rows;
+
+                xlabels.push(date);
+                ylabels.push(confirmed);
+
+                console.log(date, confirmed);
+
+
+            }
+
+            console.log("kenya");
+            for (let i = 0; i < kenyastartdate.length; i++) {
+
+                const rows = kenyastartdate[i];
+
+                const { date, confirmed } = rows;
+
+                klabels.push(confirmed);
+                console.log(date, confirmed);
+
+
+            }
+
+            console.log("Tanzania");
+            for (let i = 0; i < tanzaniastartdate.length; i++) {
+
+                const rows = tanzaniastartdate[i];
+
+                const { date, confirmed } = rows;
+
+                tlabels.push(confirmed);
+                console.log(date, confirmed);
+
+
+            }
+
+            console.log("Rwanda");
+            for (let i = 0; i < rwandastartdate.length; i++) {
+
+                const rows = rwandastartdate[i];
+
+                const { date, confirmed } = rows;
+
+                rlabels.push(confirmed);
+                console.log(date, confirmed);
+
+
+            }
+
+        }
+
+
+
+        setInterval(
+            // Here is where to do things like dom manipulation
+            function updateDiv() {
+                $("#tweetautoload").load(window.location.href + " #tweetautoload");
+            },
+
+            // Here is where you set the interval asuming I want to update every 1 second
+            2000
+        );
+
+
+
+
+
+
+
+
+    </script>
+
+    <!--JavaScript at end of body for optimized loading-->
+</body>
+<!--,backgroundColor: 'yellow'-->
+
+</html>
