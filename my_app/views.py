@@ -8,16 +8,16 @@ from my_app.twittermodule.tweet_store import TweetStore
 
 
 url = Request("https://www.worldometers.info/coronavirus/", headers={'User-Agent': 'Mozilla/5.0'})
-# url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/woldometersiteoffline.html"
+# url = "file:///home/pkasemer/Desktop/offlinedata/covidupdated.html"
 
 
 news_url = Request("https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en", headers={'User-Agent': 'Mozilla/5.0'})
-# news_url = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
+# news_url = "file:///home/pkasemer/Desktop/offlinedata/googlenewsress"
 
 gobalnewsurl = Request("https://news.google.com/news/rss", headers={'User-Agent': 'Mozilla/5.0'})
-# gobalnewsurl = "file:///C:/Users/Freedom/Covid19Project/Offline%20sites/googlenewsrss.xml"
+# gobalnewsurl = "file:///home/pkasemer/Desktop/offlinedata/googlenewsress"
 
-
+# Create your views here.
 
 
 def basepage(request):
@@ -106,8 +106,8 @@ def basepage(request):
     newcasesug = uganda[0][2]
     deathsug = uganda[0][3]
     recoveredug = uganda[0][5]
-    activecasesug = uganda[0][6]
-    testdone = uganda[0][10]
+    activecasesug = uganda[0][7]
+    testdone = uganda[0][11]
 
     # East africa
     s1 = 'Rwanda'
@@ -182,27 +182,27 @@ def basepage(request):
         'Rtotal': searchRwanda[0][1],
         'Rdeaths': searchRwanda[0][3],
         'Rrecovered': searchRwanda[0][5],
-        'Ractive': searchRwanda[0][6],
+        'Ractive': searchRwanda[0][7],
 
         'Ktotal': searchKenya[0][1],
         'Kdeaths': searchKenya[0][3],
         'Krecovered': searchKenya[0][5],
-        'Kactive': searchKenya[0][6],
+        'Kactive': searchKenya[0][7],
 
         'Btotal': searchBurundi[0][1],
         'Bdeaths': searchBurundi[0][3],
         'Brecovered': searchBurundi[0][5],
-        'Bactive': searchBurundi[0][6],
+        'Bactive': searchBurundi[0][7],
 
         'Ttotal': searchTanzania[0][1],
         'Tdeaths': searchTanzania[0][3],
         'Trecovered': searchTanzania[0][5],
-        'Tactive': searchTanzania[0][6],
+        'Tactive': searchTanzania[0][7],
 
         'Stotal': searchSouthSudan[0][1],
         'Sdeaths': searchSouthSudan[0][3],
         'Srecovered': searchSouthSudan[0][5],
-        'Sactive': searchSouthSudan[0][6],
+        'Sactive': searchSouthSudan[0][7],
 
         # africa table
         'aftabletitles': tabletitles[1:],
