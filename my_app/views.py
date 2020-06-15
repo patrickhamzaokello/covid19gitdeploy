@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+import requests
 
 
 # rending the twitter page
@@ -11,10 +12,10 @@ url = Request("https://www.worldometers.info/coronavirus/", headers={'User-Agent
 # url = "file:///home/pkasemer/Desktop/offlinedata/covidupdated.html"
 
 
-news_url = Request("https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en", headers={'User-Agent': 'Mozilla/5.0'})
+news_url = "https://news.google.com/rss?hl=en-UG&gl=UG&ceid=UG:en"
 # news_url = "file:///home/pkasemer/Desktop/offlinedata/googlenewsress"
 
-gobalnewsurl = Request("https://news.google.com/news/rss", headers={'User-Agent': 'Mozilla/5.0'})
+gobalnewsurl = "https://news.google.com/news/rss"
 # gobalnewsurl = "file:///home/pkasemer/Desktop/offlinedata/googlenewsress"
 
 # Create your views here.
@@ -141,10 +142,8 @@ def basepage(request):
     tweets = store.tweets()
 
     # news site
-    Client = urlopen(news_url)
-    xml_page = Client.read()
-    Client.close()
-
+    res = requests.get(news_url)
+    xml_page = res.content
     soup_page = BeautifulSoup(xml_page, "xml")
     news_list = soup_page.findAll("item")
     # Print news title, url and publish date
@@ -250,11 +249,9 @@ def globaldata(request):
         "%Y") + ', ' + x.strftime(
         "%X") + ' ' + x.strftime("%Z")
 
-    # news site
-    Client = urlopen(gobalnewsurl)
-    xml_page = Client.read()
-    Client.close()
-
+    # news site    
+    res = requests.get(gobalnewsurl)
+    xml_page = res.content
     soup_page = BeautifulSoup(xml_page, "xml")
     news_list = soup_page.findAll("item")
     # Print news title, url and publish date
@@ -292,9 +289,8 @@ def wikipage(request):
 def newspage(request):
 
     # news site
-    Client = urlopen(news_url)
-    xml_page = Client.read()
-    Client.close()
+    res = requests.get(news_url)
+    xml_page = res.content
 
     soup_page = BeautifulSoup(xml_page, "xml")
     news_list = soup_page.findAll("item")
