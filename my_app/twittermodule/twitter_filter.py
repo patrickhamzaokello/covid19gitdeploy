@@ -5,10 +5,10 @@ from my_app.twittermodule.tweet_store import TweetStore
 
 import json
 
-consumer_key = '9Cxv5dofHohbaVIVURcZMGBMu'
-consumer_secret = 'NaKLbd48avhwO9hDx9i9ADQRMp7ujGnBiTYZSMeGV7utpbHOe8'
-access_token = '1425384708-DCb0eNrysG8WC7aHQ1phX7LvGHdr9PWudmmcqug'
-access_token_secret = 'ZXqvNhtE5nGipCPDMrp33DDVaq2ZOZITAuTeFYzE3ncsa'
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
 
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
